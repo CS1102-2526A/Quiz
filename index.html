@@ -19,14 +19,95 @@ body {
 h2 {
     font-size: 20px;
 }
-    
+
+.start-area {
+    text-align: center;
+}
+
+.start-btn {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+.question-area {
+     margin-bottom: 25px;
+     display: none;
+     padding: 20px;
+     border-radius: 10px;
+     max-width: 600px;
+     margin: 20px auto;
+}
+
+.question {
+     font-size: 20px;
+     color: black;
+     margin-bottom: 15px;
+     line-height: 1.5;
+}
+
+.option {
+     display: block;
+     font-size: 20px;
+     cursor: pointer;
+     margin-bottom: 16px;
+     padding: 9px;
+}
+
+.btn-area {
+     display: flex;
+     justify-content: center;
+     display: none;
+}
+
+.btn {
+     
+     margin: 0 10px;
+     color: black;
+     border: none;
+     border-radius: 5px;
+     
+}
+
+.btn-pre:disabled {
+     cursor: not-allowed;
+}
+
+.result-area {
+      text-align: center;
+      display: none;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+}
+
+.result-score {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+}
+
+.result-text {
+      display: block;
+      margin: 20px 0;
+}
+
+.title-area {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+    display: none;
+}
+
 </style>
 
 
 <body>
 <h1>
 <br/>CS1102 - Simulated Chemistory Reaction - 2025/2026 Semester A<br/>
-<br/>Quiz<br/>
 <br/>Tong Wing Yan 57905703, Tam Wing Nga 58196547, Wong Cheuk Wing 58112774, Wong Ching Yu 58620001<br/>
 <br/>MON 15:00-15:50 Project Group 6<br/>
 <br></br>
@@ -34,5 +115,142 @@ h2 {
 
 <h2><a href="https://cs1102-2526a.github.io/index/">Return Home Page</a></h2>
 
+   <div class="quiz-container" id="quiz-container">
+
+       <div class="start-area" id="startPage">
+           <h1 class="title">Quiz</h1>
+           <p class="start-desc">
+              <h3 style="color:black;">How much do you know about the acid-base reaction? This quick and simple quiz would like to test your basic understanding and knowledge of this chemistry reaction.<br></h3> 
+              <h4 style="color:Maroon;">Let's have a try! (Only 5 MC questions)<br></h4>
+           </p>
+           <button class="start-btn" onclick="startQuiz()">Start</button>
+       </div>
+
+       <div class="title-area" id="quizTitle">   
+       </div>
+         
+        <div class="question-area" id="question1">
+            <p class="question"><b>1. Which of the following is a characteristic of acids?</b></p>
+            <label class="options"><input type="radio" name="q1" value="Correct"><span>A. Sour taste</span></label>
+            <label class="options"><input type="radio" name="q1" value="Incorrect"><span>B. Bitter taste</span></label>
+            <label class="options"><input type="radio" name="q1" value="Incorrect"><span>C. Slippery feel</span></label>
+            <label class="options"><input type="radio" name="q1" value="Incorrect"><span>D. Turns red litmus blue</span></label>
+        </div>        
+        <div class="question-area" id="question2">
+            <p class="question"><b>2. Which pH value shows a neutral solution?</b></p>
+            <label class="options"><input type="radio" name="q2" value="Incorrect"><span>A. 0</span></label>
+            <label class="options"><input type="radio" name="q2" value="Incorrect"><span>B. 6</span></label>
+            <label class="options"><input type="radio" name="q2" value="Correct"><span>C. 7</span></label>
+            <label class="options"><input type="radio" name="q2" value="Incorrect"><span>D. 14</span></label>
+        </div>
+        <div class="question-area" id="question3">
+            <p class="question"><b>3. Which substances is a base?</b></p>
+            <label class="options"><input type="radio" name="q3" value="Incorrect"><span>A. HCI</span></label>
+            <label class="options"><input type="radio" name="q3" value="Incorrect"><span>B. CO₂</span></label>
+            <label class="options"><input type="radio" name="q3" value="Correct"><span>C. NaOH</span></label>
+            <label class="options"><input type="radio" name="q3" value="Incorrect"><span>D. NaCI</span></label>
+        </div>
+        <div class="question-area" id="question4">
+            <p class="question"><b>4. What is formed when an acid reacts with a base?</b></p>
+            <label class="options"><input type="radio" name="q4" value="Incorrect"><span>A. Water</span></label>
+            <label class="options"><input type="radio" name="q4" value="Incorrect"><span>B. Salt</span></label>
+            <label class="options"><input type="radio" name="q4" value="Incorrect"><span>C. Hydrogen gas</span></label>
+            <label class="options"><input type="radio" name="q4" value="Correct"><span>D. Salt and water</span></label>
+        </div>
+        <div class="question-area" id="question5">
+            <p class="question"><b>5. In a basic solution,what color does blue litmus paper turn in?</b></p>
+            <label class="options"><input type="radio" name="q5" value="Incorrect"><span>A. Red</span></label>
+            <label class="options"><input type="radio" name="q5" value="Correct"><span>B. Stay blue</span></label>
+            <label class="options"><input type="radio" name="q5" value="Incorrect"><span>C. Green</span></label>
+            <label class="options"><input type="radio" name="q5" value="Incorrect"><span>D. Yellow</span></label>
+        </div>
+        
+        <div class="result-area" id="result">
+            <p class="result-score" id="score">80 marks</p>
+            <p class="result-text" id="feedback">You got 4 out of 5!</p>
+            <button class="btn" onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    
+        <div class="btn-area" id="btnGroup">
+            <button class="btn btn-prev" id="prevBtn" onclick="changeQuestion(-1)" disabled>previous</button>
+            <button class="btn btn-next" id="nextBtn" onclick="changeQuestion(1)">next</button>
+        </div>
+     </div>
+   
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        const correctAnswers = { q1: "Correct", q2: "Correct", q3: "Correct", q4: "Correct", q5: "Correct" };
+        
+        function startQuiz() {
+            document.getElementById("startPage").style.display = "none";
+            document.getElementById("quizTitle").style.display = "block";
+            document.getElementById(`question${currentQuestion}`).style.display = "block";
+            document.getElementById("btnGroup").style.display = "flex";
+        }
+        
+        function changeQuestion(direction) {
+            document.getElementById(`question${currentQuestion}`).style.display = "none";
+            currentQuestion = currentQuestion + direction;
+            
+            document.getElementById("prevBtn").disabled = currentQuestion === 1;
+            
+            if (currentQuestion === totalQuestions) {
+                document.getElementById("nextBtn").innerText = "submit";
+            } else {    
+                document.getElementById("nextBtn").innerText = "next";
+            }
+            
+            if (currentQuestion > totalQuestions) {
+                calculateScore();
+                return;
+            }
+        
+            document.getElementById(`question${currentQuestion}`).style.display = "block";
+        }
+            
+        function calculateScore() {
+            let score = 0;
+            let correctCount = 0;
+            
+            for (let i = 1; i <= totalQuestions; i++) {
+                 const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                 if (selected && selected.value === correctAnswers[`q${i}`]) {
+                 score = score + 20;
+                 correctCount = correctCount + 1;
+                 }
+            }
+            
+            document.querySelectorAll(".question-area").forEach(function(area) {                    area.style.display = "none";
+            });
+            document.getElementById("btnGroup").style.display = "none";
+            document.getElementById("quizTitle").style.display = "none";
+            document.getElementById("result").style.display = "block";
+            document.getElementById("score").innerText = `${score} marks`;
+            document.getElementById("feedback").innerText = 'You got ' + correctCount + ' out of ' + totalQuestions + ' correct!';
+            
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 1;
+            document.getElementById("result").style.display = "none";
+            document.getElementById("startPage").style.display = "block";
+            document.getElementById("quizTitle").style.display = "none";
+            document.getElementById("btnGroup").style.display = "none";
+            
+            document.querySelectorAll("input[type='radio']").forEach(function(input) {                        input.checked = false;
+            });
+            
+            document.getElementById("prevBtn").disabled = true;
+            document.getElementById("nextBtn").innerText = "next";
+            
+          }
+            
+            
+       
+    </script>
+</body>
+</html>
+        
 
 
